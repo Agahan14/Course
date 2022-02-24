@@ -1,0 +1,84 @@
+FORMAT: 1A
+HOST: https://polls.apiblueprint.org/
+
+# Course 
+
+Course is a simple API allowing consumers to view the course that 
+they want to start learning.
+
+## Courses[/course]
+
+### List All Courses [GET]
+
++ Response 200 (application/json)
+
+        [
+                {
+                "id": 2,
+                "name": "Englsih Course",
+                "description": "This course is designed for people who wants to learn Englsih from scratch",
+                "logo": "/6758.jpg",
+                "category": 6,
+                "contacts": 3,
+                "branches": 2
+                }
+        ]
+
+### Create a New Course [POST]
+
+You may create your own course if you want to start teaching people. 
+It takes a JSON object containing courses, category, branche and contact.
+You need first create new category, branch and contact to create Course model.
+There are links for that 
+category: /category/
+branch: /branch/
+contact: /contact/
+
++ Request (application/json)
+
+        {
+        
+        "name": "Englsih Course",
+        "description": "This course is designed for people who wants to learn Englsih from scratch",
+        "logo": "/6758.jpg",
+        "category": 6,
+        "contacts": 3,
+        "branches": 2
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /course/
+
+    + Body
+
+            {
+            "id": 2,
+            "name": "Englsih Course",
+            "description": "This course is designed for people who wants to learn Englsih from scratch",
+            "logo": "/6758.jpg",
+            "category": 6,
+            "contacts": 3,
+            "branches": 2
+            }
+            
+## CourseDetail [/course/{course_id}]
+
++ Parameters
+    + course_id (number) - ID of the Course in the form of an integer
+    
+### View a Course Detail [GET]
+
++ Response 200 (application/json)
+
+        {
+        "id": 2,
+        "name": "Englsih Course",
+        "description": "This course is designed for people who wants to learn Englsih from scratch",
+        "logo": "/6758.jpg",
+        "category": 6,
+        "contacts": 3,
+        "branches": 2
+        }
